@@ -2,450 +2,338 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Анкеты в Морозко | Пункты приёма</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкеты в Морозко</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
+        
         body {
-            background-color: #faf0e1;  /* бежевый фон */
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            padding: 2rem 1rem;
-            color: #3e2a1f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5deb3; /* Бежевый фон */
+            padding: 20px;
+            line-height: 1.6;
         }
-
+        
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-
-        /* заголовок */
-        .header {
+        
+        header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            padding: 30px 20px;
+            margin-bottom: 30px;
         }
-
+        
         h1 {
+            color: #8b4513;
             font-size: 2.5rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #c95a0f, #f39c12);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.05);
-            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
         }
-
-        .sub {
-            font-size: 1.1rem;
-            color: #7a5a3a;
-            border-top: 1px solid #e6d5bd;
-            border-bottom: 1px solid #e6d5bd;
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #fff6eb;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
+        
+        .subtitle {
+            color: #a0522d;
+            font-size: 1.2rem;
         }
-
-        /* сетка кнопок */
+        
         .buttons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            padding: 10px;
         }
-
-        /* карточка-кнопка */
-        .card-btn {
-            background-color: #ffffffcc;
-            backdrop-filter: blur(2px);
-            border-radius: 28px;
-            transition: all 0.25s ease;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0,0,0,0.03);
-            border: 1px solid #f5e5d2;
+        
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
         }
-
-        .card-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 28px -10px rgba(0, 0, 0, 0.15);
-            background-color: #fffaf5;
-            border-color: #f7c9a4;
-        }
-
-        /* оранжевая кнопка */
-        .btn-orange {
+        
+        .btn {
             display: block;
             width: 100%;
-            background-color: #f57c00;   /* насыщенный оранжевый */
-            border: none;
-            padding: 1rem 1.2rem;
-            text-align: center;
-            font-size: 1rem;
-            font-weight: 600;
+            max-width: 400px;
+            padding: 16px 20px;
+            background-color: #ff8c00; /* Оранжевый цвет кнопки */
             color: white;
             text-decoration: none;
-            border-radius: 28px;
-            transition: 0.2s linear;
-            font-family: inherit;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(245, 124, 0, 0.25);
-            letter-spacing: 0.3px;
-            word-break: break-word;
-            white-space: normal;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            text-align: center;
             line-height: 1.4;
         }
-
-        .btn-orange:active {
-            transform: scale(0.97);
-            background-color: #e66a00;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        
+        .btn:hover {
+            background-color: #e67e00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
-
-        /* адрес внутри кнопки (основной текст) */
-        .address-text {
-            display: block;
-            font-size: 1rem;
-            font-weight: 600;
+        
+        .btn:active {
+            transform: translateY(0);
         }
-
-        /* маленькая подпись "открыть анкету" (доп. визуал) */
-        .hint {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: normal;
-            opacity: 0.85;
-            margin-top: 6px;
-            letter-spacing: 0.3px;
+        
+        .btn:focus {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
         }
-
-        /* футер */
-        .footer {
+        
+        footer {
             text-align: center;
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #b39273;
-            border-top: 1px dashed #e0caae;
-            padding-top: 1.8rem;
+            padding: 30px 20px;
+            color: #8b4513;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid #d2b48c;
         }
-
-        @media (max-width: 680px) {
-            body {
-                padding: 1rem 0.8rem;
-            }
-            h1 {
-                font-size: 1.9rem;
-            }
+        
+        @media (max-width: 768px) {
             .buttons-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
-            .btn-orange {
-                padding: 0.9rem 1rem;
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 14px 18px;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>🍊 Анкеты в Морозко</h1>
-        <div class="sub">Выберите пункт — откроется анкета в приложении</div>
-        <div style="font-size: 0.85rem; margin-top: 10px; color: #b97f46;">📱 нажмите на кнопку с адресом</div>
+    <div class="container">
+        <header>
+            <h1>❄️ Анкеты в Морозко ❄️</h1>
+            <p class="subtitle">Выберите удобный пункт для подачи анкеты</p>
+        </header>
+        
+        <main class="buttons-grid">
+            <!-- Новосибирск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=6F9619FF-8B86-D011-B42D-00C04FC964FF&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Гусинобродское ш., д. 64</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=A6F1B2C3-D4E5-F6A7-B8C9-D0E1F2A3B4C5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Энергетиков проезд, д. 9</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=12345678-90AB-CDEF-1234-567890ABCDEF&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Большевистская ул., д. 52/1</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=87654321-0FED-CBA9-8765-4321FEDCBA09&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Кирзаводская ул., д. 1А</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=FEDCBA09-8765-4321-FEDC-BA9876543210&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Петухова ул., д. 73</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=F1A2B3C4-D5E6-47F8-89A0-B1C2D3E4F5A6&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Мясниковой ул., д. 29</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=B7C8D9E0-F1A2-43B4-C5D6-E7F8A9B0C1D2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новосибирск г., Бердское ш., д. 2</a>
+            </div>
+            
+            <!-- Барнаул -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=00000000-0000-0000-0000-000000000011&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Барнаул г., Павловский тракт, д. 156</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=5D9E8F2A-1B3C-4D5E-6F7A-8B9C0D1E2F3A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Барнаул г., Власихинская ул., д. 67</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=4D5E6F7A-8B9C-4D0E-1F2A-3B4C5D6E7F8A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Барнаул г. Ленина пр. 102 В</a>
+            </div>
+            
+            <!-- Омск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=00000000-0000-0000-0000-000000000001&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омск г., 21-я Амурская ул., д. 21</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=ABCDEF12-3456-7890-ABCD-EF1234567890&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омск г., Лукашевича ул., д. 33</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=3F2504E0-4F89-41D3-9A0C-0305E82C3301&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омск г. Сибирский пр. 7</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=7C9E6679-7425-40DE-9443-E07A3F6A7B8C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омск г. 10 Лет Октября ул. 190 корп.2</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=9E0F1A2B-3C4D-45E6-F7A8-B9C0D1E2F3A4&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омск г. с. Пушкино, Красноярский тракт д. 22А</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=9C8D7E6F-5A4B-4C3D-2E1F-0A9B8C7D6E5F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омская обл., Омск, 70 лет Октября улица, 1</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=2D3E4F5A-6B7C-4D8E-9F0A-1B2C3D4E5F6A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омская обл., Омск, 6-я Станционная улица, 2\5</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=8E9F0A1B-2C3D-4E5F-6A7B-8C9D0E1F2A3B&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омская обл., Омск, Химиков улица, 30</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=B8C9D0E1-F2A3-4B4C-5D6E-7F8A9B0C1D2E3&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омская обл., Омск, Заозёрная улица, 24</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=C0D1E2F3-A4B5-4C6D-7E8F-9A0B1C2D3E4F5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Омская обл., Омск, Перелёта улица, 23\1</a>
+            </div>
+            
+            <!-- Прокопьевск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=9A8B7C6D-5E4F-3A2B-1C0D-9E8F7A6B5C4D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Прокопьевск г. Строителей пр. 18</a>
+            </div>
+            
+            <!-- Бийск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=D4E5F6A7-B8C9-D0E1-F2A3-B4C5D6E7F8A9&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Бийск г. Митрофанова ул. 1/1</a>
+            </div>
+            
+            <!-- Новокузнецк -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=B2C3D4E5-F6A7-489B-9C0D-1E2F3A4B5C6D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новокузнецк г. село Ильинка Светлая ул. 7</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=0B1C2D3E-4F5A-46B7-C8D9-E0F1A2B3C4D5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новокузнецк г. Центральный р-н.Транспортная ул. 136</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=D8E9F0A1-B2C3-44D5-E6F7-A8B9C0D1E2F3&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новокузнецк г. Зорге ул. д. 7, лит. А</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=4E5F6A7B-8C9D-40E1-F2A3-B4C5D6E7F8A9&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Новокузнецк г. Хлебозаводская ул. 19</a>
+            </div>
+            
+            <!-- Красноярск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=E7F8A9B0-C1D2-E3F4-A5B6-C7D8E9F0A1B2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Красноярск г. Советский район, ул. 9 Мая-ул. д. 62</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=5C6D7E8F-9A0B-4C1D-2E3F-4A5B6C7D8E9F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Красноярск г. Дмитрия Мартынова ул.,12</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=F4A5B6C7-D8E9-4F0A-1B2C-3D4E5F6A7B8C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Красноярск г., Ястынская ул., д. 19 лит. Д</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=8A9B0C1D-2E3F-4A5B-6C7D-8E9F0A1B2C3D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Красноярск г., Свердловская ул., д. 73</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=3F8A9B0C-1D2E-43F4-A5B6-C7D8E9F0A1B2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Красноярск г., Мичурина ул., д. 77</a>
+            </div>
+            
+            <!-- Томск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=C5D6E7F8-A9B0-41C2-D3E4-F5A6B7C8D9E0&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Томск г. пр. Мира 30</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=8C9D0E1F-2A3B-4C5D-6E7F-8A9B0C1D2E3F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Томск г. Елизаровых ул. 13</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=7A8B9C0D-1E2F-43A4-B5C6-D7E8F9A0B1C2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Томск г. Пушкина ул. 59</a>
+            </div>
+            
+            <!-- Кемерово -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=A3B4C5D6-E7F8-49A0-B1C2-D3E4F5A6B7C8&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Кемерово г. Ленинградский пр-кт д. 28 B</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=1A2B3C4D-5E6F-47A8-9B0C-1D2E3F4A5B6C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Кемерово г. Баумана ул. д.20</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=E2F3A4B5-C6D7-48E9-F0A1-B2C3D4E5F6A7&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Кемерово г. Кузнецкий пр. стр. 33</a>
+            </div>
+            
+            <!-- Юрга -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=2E3F4A5B-6C7D-4E8F-9A0B-1C2D3E4F5A6B&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Юрга г. Кузбасский пр. Волгоградская ул., д. 29</a>
+            </div>
+            
+            <!-- Ачинск -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=C1D2E3F4-A5B6-47C8-D9E0-F1A2B3C4D5E6&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Ачинск г. Юго-Восточный мкр, 65</a>
+            </div>
+            
+            <!-- Екатеринбург -->
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=5A7C1E92-3D4F-4B8A-9C1E-7F2A6D8B4C10&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул. 2-я Новосибирская,8</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=8F3D2A71-6C5B-4E90-A1D3-2B7C9E4F5A61&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Айвазовского,53</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=1C9B4D7E-8A2F-4C35-B6D1-E0F7A2B3C4D8&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Академика Шварца,1</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=A4E7B2C9-D1F3-4A6E-8B0D-5C2F9A1E7D34&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Восточная,35</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=7B1E3D5A-9C4F-4E2A-B8D6-1F0C3A7E5D92&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Высоцкого,12, пом.1</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=D2A9F4C1-7B3E-4D8F-A5C0-9E1B6D2F3A74&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Космонавтов пр-кт,2</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=3E5C7A1D-2F9B-4A0E-C6D3-8B1F4E7A9C25&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Краснолесья,12а</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=F7A2D8C4-1B5E-4F3A-9D6C-2E0B7A1C5D83&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Краснолесья,133</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=6D1F9B3A-4C7E-4A5D-B2F8-0C3E7A9D1B64&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Культуры б-р,44</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=2A8E4C7F-5D1B-4E9A-C3F6-7B0D2A5E8C91&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Луначарского,205</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=9B5D1A3E-7F4C-4D2B-A8E0-1C6F9A3D5B72&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Советская,6а</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=C4F8A2D1-9E3B-4A7C-B5D0-6F1E2A8C4D93&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Таватуйская,14</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=E1A7C5B9-3D2F-4E8A-9B4C-0D7F1A5E3C68&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Токарей,52</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=4C2D8F1A-6B9E-4A3F-C7D5-8E0A2B6F1D34&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Фурманова,37</a>
+            </div>
+            <div class="btn-wrapper">
+                <a href="optimum://external?ServerID=146&ProjectID=1&PointID=B9E3A7D2-5C1F-4D6A-8F0B-3E7C1A9D5F42&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su" class="btn">Екатеринбург, ул.Ясная,2</a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2026 Анкеты в Морозко | Все права защищены</p>
+            <p style="margin-top: 8px; font-size: 0.85rem; color: #a0522d;">
+                Для работы кнопок необходимо установленное приложение Optimum
+            </p>
+        </footer>
     </div>
-
-    <div class="buttons-grid">
-        <!-- данные строго по таблице: Адрес (название кнопки) + ссылка optimum -->
-        <!-- 1 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=6F9619FF-8B86-D011-B42D-00C04FC964FF&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Гусинобродское ш., д. 64</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 2 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=A6F1B2C3-D4E5-F6A7-B8C9-D0E1F2A3B4C5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Энергетиков проезд, д. 9</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 3 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=12345678-90AB-CDEF-1234-567890ABCDEF&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Большевистская ул., д. 52/1</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 4 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=87654321-0FED-CBA9-8765-4321FEDCBA09&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Барнаул г., Павловский тракт, д. 156</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 5 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=00000000-0000-0000-0000-000000000011&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск ул. 70 лет Октября д25,3</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 6 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=FFFFFFFF-AAAA-BBBB-CCCC-DDDDDDDDDDDD&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Кирзаводская ул., д. 1А</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 7 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=00000000-0000-0000-0000-000000000001&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск г., 21-я Амурская ул., д. 21</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 8 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=ABCDEF12-3456-7890-ABCD-EF1234567890&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск г., Лукашевича ул., д. 33</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 9 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=FEDCBA09-8765-4321-FEDC-BA9876543210&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Петухова ул., д. 73</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 10 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=3F2504E0-4F89-41D3-9A0C-0305E82C3301&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск г. Сибирский пр. 7</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 11 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=7C9E6679-7425-40DE-9443-E07A3F6A7B8C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск г. 10 Лет Октября ул. 190 корп.2</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 12 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=5D9E8F2A-1B3C-4D5E-6F7A-8B9C0D1E2F3A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Барнаул г., Власихинская ул., д. 67</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 13 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=9A8B7C6D-5E4F-3A2B-1C0D-9E8F7A6B5C4D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Прокопьевск г. Строителей пр. 18</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 14 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=D4E5F6A7-B8C9-D0E1-F2A3-B4C5D6E7F8A9&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Бийск г. Митрофанова ул. 1/1</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 15 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=B2C3D4E5-F6A7-489B-9C0D-1E2F3A4B5C6D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новокузнецк г. село Ильинка Светлая ул. 7</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 16 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=E7F8A9B0-C1D2-E3F4-A5B6-C7D8E9F0A1B2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Красноярск г. Советский район, ул. 9 Мая-ул. д. 62</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 17 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=C5D6E7F8-A9B0-41C2-D3E4-F5A6B7C8D9E0&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Томск г. пр. Мира 30</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 18 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=A3B4C5D6-E7F8-49A0-B1C2-D3E4F5A6B7C8&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Кемерово г. Ленинградский пр-кт д. 28 B</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 19 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=F1A2B3C4-D5E6-47F8-89A0-B1C2D3E4F5A6&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Мясниковой ул., д. 29</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 20 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=8C9D0E1F-2A3B-4C5D-6E7F-8A9B0C1D2E3F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Томск г. Елизаровых ул. 13</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 21 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=4D5E6F7A-8B9C-4D0E-1F2A-3B4C5D6E7F8A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Барнаул г. Ленина пр. 102 В</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 22 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=2E3F4A5B-6C7D-4E8F-9A0B-1C2D3E4F5A6B&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Юрга г. Кузбасский пр. Волгоградская ул., д. 29</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 23 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=7A8B9C0D-1E2F-43A4-B5C6-D7E8F9A0B1C2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Томск г. Пушкина ул. 59</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 24 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=0B1C2D3E-4F5A-46B7-C8D9-E0F1A2B3C4D5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новокузнецк г. Центральный р-н.Транспортная ул. 136</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 25 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=9E0F1A2B-3C4D-45E6-F7A8-B9C0D1E2F3A4&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омск г. с. Пушкино, Красноярский тракт д. 22А</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 26 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=1A2B3C4D-5E6F-47A8-9B0C-1D2E3F4A5B6C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Кемерово г. Баумана ул. д.20</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 27 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=5C6D7E8F-9A0B-4C1D-2E3F-4A5B6C7D8E9F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Красноярск г. Дмитрия Мартынова ул.,12</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 28 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=D8E9F0A1-B2C3-44D5-E6F7-A8B9C0D1E2F3&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новокузнецк г. Зорге ул. д. 7, лит. А</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 29 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=F4A5B6C7-D8E9-4F0A-1B2C-3D4E5F6A7B8C&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Красноярск г., Ястынская ул., д. 19 лит. Д</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 30 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=B7C8D9E0-F1A2-43B4-C5D6-E7F8A9B0C1D2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новосибирск г., Бердское ш., д. 2</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 31 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=E2F3A4B5-C6D7-48E9-F0A1-B2C3D4E5F6A7&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Кемерово г. Кузнецкий пр. стр. 33</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 32 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=8A9B0C1D-2E3F-4A5B-6C7D-8E9F0A1B2C3D&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Красноярск г., Свердловская ул., д. 73</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 33 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=4E5F6A7B-8C9D-40E1-F2A3-B4C5D6E7F8A9&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Новокузнецк г. Хлебозаводская ул. 19</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 34 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=C1D2E3F4-A5B6-47C8-D9E0-F1A2B3C4D5E6&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Ачинск г. Юго-Восточный мкр, 65</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 35 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=3F8A9B0C-1D2E-43F4-A5B6-C7D8E9F0A1B2&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Красноярск г., Мичурина ул., д. 77</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 36 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=9C8D7E6F-5A4B-4C3D-2E1F-0A9B8C7D6E5F&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омская обл., Омск, 70 лет Октября улица, 1</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 37 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=2D3E4F5A-6B7C-4D8E-9F0A-1B2C3D4E5F6A&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омская обл., Омск, 6-я Станционная улица, 2\5</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 38 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=8E9F0A1B-2C3D-4E5F-6A7B-8C9D0E1F2A3B&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омская обл., Омск, Химиков улица, 30</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 39 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=B8C9D0E1-F2A3-4B4C-5D6E-7F8A9B0C1D2E3&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омская обл., Омск, Заозёрная улица, 24</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 40 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=C0D1E2F3-A4B5-4C6D-7E8F-9A0B1C2D3E4F5&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Омская обл., Омск, Перелёта улица, 23\1</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 41 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&PointID=5A7C1E92-3D4F-4B8A-9C1E-7F2A6D8B4C10&OptimumUserId=974178ed-0fe7-41d0-8e9f-773439de17ba&ReverseURL=https://ofrs.su">
-                <span class="address-text">Екатеринбург, ул. 2-я Новосибирская,8</span>
-                <span class="hint">📄 открыть анкету</span>
-            </a>
-        </div>
-        <!-- 42 -->
-        <div class="card-btn">
-            <a class="btn-orange" href="optimum://external?ServerID=146&ProjectID=1&
+    
+    <script>
+        // Плавная прокрутка для якорных ссылок (если понадобятся)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Добавляем подсказку при наведении на кнопки с длинным текстом
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (this.scrollWidth > this.clientWidth) {
+                    this.title = this.textContent;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
